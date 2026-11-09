@@ -57,8 +57,18 @@ public class Monty {
     // This is called by Monty after the contestant makes his/her first guess.
     // It returns the position of a door behind which is a goat.
     private int goatDoorToShow (int doorWithCar, int chosenDoor) {
-      return -1;
-		//write this ....
+        if (doorWithCar == chosenDoor){
+            int x = randoms.nextInt(2)+ 1;
+            if(chosenDoor == 1){
+                return x +1;
+            } else if (chosenDoor == 2){
+                return x * 2 - 1;
+            } else {
+                return x;
+            }
+        } else {
+            return 6 - (doorWithCar + chosenDoor);
+        }
     }
     
     // The contestant decides on a second guess, aided (?) by knowing that the given
@@ -67,12 +77,12 @@ public class Monty {
         int guess;
         control.say ("Would you like to stick with your guess, or switch? Please choose a door.", 0);
         control.picture (control.MONTY_HANDLING_CHOICE2, 0);
-        control.picture (control.CONTESTANT_THINKING, 5000);
+        control.picture (control.CONTESTANT_THINKING, 3000);
         guess = player.guess2 (goatDoor);
         if (guess == firstChoice) {
-            control.say ("Sticking with your guess of " + guess + " ...", 2000);
+            control.say ("Sticking with your guess of " + guess + " ...", 1000);
         } else {
-            control.say ("You decided to switch to door " + guess + " ...", 2000);
+            control.say ("You decided to switch to door " + guess + " ...", 1000);
         }
         return guess;
     }
