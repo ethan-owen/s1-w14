@@ -22,7 +22,7 @@ public class SimContestant {
         if (stay){
             return myInitialGuess;
         } else {
-            return 6 
+            return 6 - (openedDoor + myInitialGuess);
         }
     }
 }
