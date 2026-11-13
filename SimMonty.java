@@ -5,9 +5,11 @@ public class SimMonty {
    
     private Random randoms;
     private SimContestant player;
+    private int option;
    
     
-    public SimMonty ( ) {
+    public SimMonty (int option) {
+        this.option = option;
         Calendar c = Calendar.getInstance ( );
         randoms = new Random (c.getTimeInMillis ( ));
         player = new SimContestant (randoms);
@@ -72,7 +74,7 @@ public class SimMonty {
     // door has a goat.  Return the updated guess.
     private int newGuess (int goatDoor, int firstChoice) {
         int guess;
-        guess = player.guess2 (goatDoor);
+        guess = player.guess2 (goatDoor, option);
         return guess;
     }
     
